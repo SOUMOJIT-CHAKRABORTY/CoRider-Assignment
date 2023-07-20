@@ -7,7 +7,7 @@ export interface chatMessage {
     user_id: string;
   };
   message: string;
-  timestamp: string;
+  time: string;
 }
 
 export interface apiData {

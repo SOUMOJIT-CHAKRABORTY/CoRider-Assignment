@@ -1,10 +1,12 @@
 import {
+  AbsoluteCenter,
   Avatar,
   Box,
   Card,
   CardBody,
   Center,
   Container,
+  Divider,
   Flex,
   Text,
   WrapItem,
@@ -32,13 +34,19 @@ const MessageSec: React.FC<Props> = ({
     <InfiniteScroll
       dataLength={chats.length}
       next={handleLoadMore}
-      hasMore={true}
+      hasMore={false}
       loader={
         <Center>
           <h4>Loading...</h4>
         </Center>
       }
     >
+      <Box position="relative" padding="10">
+        <Divider />
+        <AbsoluteCenter textColor={"gray.500"} bg={"#FAF9F4"} px="4">
+          <Text>20th Jul 2023</Text>
+        </AbsoluteCenter>
+      </Box>
       {chats.length > 0 ? (
         chats.reverse().map((chat) => {
           return (
