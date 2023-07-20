@@ -84,13 +84,14 @@ const MessageSec: React.FC<Props> = ({
                       borderBottomLeftRadius="20px"
                       marginTop="15px"
                       marginRight="5px"
+                      bg={"#1C63D5"}
                     >
                       <CardBody>
                         <Text
                           fontWeight="light"
                           fontSize="14px"
                           fontFamily="verdana"
-                          color="#606060"
+                          color="#ffffff"
                         >
                           {chat.message}
                         </Text>
