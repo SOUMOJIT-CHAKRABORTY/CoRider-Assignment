@@ -35,12 +35,15 @@ const MessageBar: React.FC = () => {
         paddingRight: "20px",
       }}
     >
-      <InputGroup maxW={{ base: "100%", md: "50%" }}>
+      <InputGroup maxW={{ base: "100%", md: "50%" }} border="white">
         <Input
           placeholder="message"
           size="md"
           background="#ffffff"
-          color="#B7B7B7"
+          textColor="#B7B7B7"
+          fontWeight="base"
+          fontSize="14px"
+          letterSpacing="1px"
         />
         <InputRightElement marginRight="10px">
           <Popover placement="top" onClose={onClose} onOpen={onOpen}>

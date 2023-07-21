@@ -2,8 +2,6 @@ import {
   AbsoluteCenter,
   Avatar,
   Box,
-  Card,
-  CardBody,
   Center,
   Container,
   Divider,
@@ -57,14 +55,19 @@ const MessageSec: React.FC<Props> = ({
                     <WrapItem>
                       <Avatar src={chat.sender.image} boxSize={8} />
                     </WrapItem>
-                    <Card
+                    <Box
                       borderBottomRadius="20px"
                       borderTopRightRadius="20px"
                       borderTopLeftRadius="0px"
-                      marginTop="15px"
+                      textAlign="left"
+                      maxW="80%"
+                      padding="5px"
+                      marginTop="5px"
                       marginLeft="5px"
+                      bg="#ffffff"
+                      shadow="lg"
                     >
-                      <CardBody>
+                      <Container paddingLeft="7px" paddingRight="0">
                         <Text
                           fontWeight="light"
                           fontSize="14px"
@@ -73,30 +76,42 @@ const MessageSec: React.FC<Props> = ({
                         >
                           {chat.message}
                         </Text>
-                      </CardBody>
-                    </Card>
+                      </Container>
+                    </Box>
                   </Flex>
                 ) : (
                   <Flex>
-                    <Card
+                    <Avatar visibility="hidden" boxSize={10}>
+                      lol
+                    </Avatar>
+                    <Box
                       borderTopRadius="20px"
                       borderBottomRightRadius="0px"
                       borderBottomLeftRadius="20px"
-                      marginTop="15px"
+                      right="0"
+                      textAlign="left"
+                      paddingLeft="0"
+                      paddingRight="0"
+                      padding="5px"
+                      marginTop="5px"
                       marginRight="5px"
                       bg={"#1C63D5"}
+                      shadow="lg"
+                      maxW={"84%"}
+                      marginLeft="40px"
                     >
-                      <CardBody>
+                      <Container paddingLeft="7px" paddingRight="0">
                         <Text
                           fontWeight="light"
                           fontSize="14px"
                           fontFamily="verdana"
+                          textAlign="left"
                           color="#ffffff"
                         >
                           {chat.message}
                         </Text>
-                      </CardBody>
-                    </Card>
+                      </Container>
+                    </Box>
                   </Flex>
                 )}
               </Container>

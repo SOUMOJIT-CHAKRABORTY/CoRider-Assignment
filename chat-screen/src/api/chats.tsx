@@ -51,7 +51,7 @@ const GetChats: React.FC = () => {
     >
       <Navbar apiRes={apiRes} />
       <RoomHeader apiRes={apiRes} />
-      <Divider />
+      <Divider colorScheme="blackAlpha" />
       {loading && (
         <AbsoluteCenter>
           <Spinner
@@ -65,7 +65,7 @@ const GetChats: React.FC = () => {
       )}
       <Flex
         direction="column-reverse"
-        style={{ overflowY: "auto", height: "calc(100% - 198px)" }}
+        style={{ overflowY: "auto", height: "calc(100% - 210px)" }}
       >
         <MessageSec
           chats={chats}
