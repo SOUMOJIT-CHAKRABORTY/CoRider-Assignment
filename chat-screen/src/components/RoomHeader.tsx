@@ -17,14 +17,14 @@ const RoomHeader: React.FC<Props> = ({ apiRes }: Props) => {
     >
       <Avatar marginRight="15px" />
       <Stack>
-        <Text fontWeight="light" fontSize="md" letterSpacing="1px">
-          from{" "}
+        <Text fontWeight="light" fontSize="md" letterSpacing="1px" margin="0">
+          From{" "}
           <span style={{ fontWeight: "bold", fontSize: "18px" }}>
             {apiRes.from}
           </span>
         </Text>
-        <Text fontWeight="light" fontSize="md" letterSpacing="1px">
-          to{" "}
+        <Text fontWeight="light" fontSize="md" letterSpacing="1px" margin="0">
+          To{" "}
           <span style={{ fontWeight: "bold", fontSize: "18px" }}>
             {apiRes.to}
           </span>

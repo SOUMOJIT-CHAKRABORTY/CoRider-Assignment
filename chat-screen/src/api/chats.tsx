@@ -5,11 +5,9 @@ import MessageBar from "../components/MessageBar";
 import MessageSec from "../components/MessageSec";
 import RoomHeader from "../components/RoomHeader";
 import Navbar from "../components/Navbar";
-import { apiData, chatMessage } from "../types/types";
+import { apiData } from "../types/types";
 
 const GetChats: React.FC = () => {
-  const [chats, setChats] = useState<chatMessage[]>([]);
-  const [pageNumber, setPageNumber] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [apiRes, setApiRes] = useState<apiData>({
     from: "",
@@ -19,25 +17,26 @@ const GetChats: React.FC = () => {
     to: "",
   });
   const fetchChats = async () => {
-    const response = await axios.get(
-      "https://qa.corider.in/assignment/chat?page=0"
-    );
+    try {
+      const response = await axios.get(
+        "https://qa.corider.in/assignment/chat?page=0"
+      );
 
-    const data = response.data;
-    setApiRes({
-      ...data,
-    });
-    if (data && data.chats) {
-      const newChat: chatMessage[] = data.chats || [];
-
-      setChats((prev) => [...prev, ...newChat]);
-      setLoading(false);
+      const data = response.data;
+      setApiRes({
+        ...data,
+      });
+      if (data) {
+        setLoading(false);
+      }
+    } catch {
+      console.log("Error fetching Data");
     }
   };
 
   useEffect(() => {
     fetchChats();
-  }, [pageNumber]);
+  }, []);
 
   return (
     <Box
@@ -63,15 +62,8 @@ const GetChats: React.FC = () => {
           />
         </AbsoluteCenter>
       )}
-      <Flex
-        direction="column-reverse"
-        style={{ overflowY: "auto", height: "calc(100% - 210px)" }}
-      >
-        <MessageSec
-          chats={chats}
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-        />
+      <Flex style={{ overflowY: "auto", height: "calc(100% - 210px)" }}>
+        <MessageSec />
       </Flex>
       <MessageBar />
     </Box>

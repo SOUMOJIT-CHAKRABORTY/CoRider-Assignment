@@ -14,6 +14,7 @@ const Navbar: React.FC<Props> = ({ apiRes }: Props) => {
       alignItems="center"
       paddingLeft="20px"
       paddingRight="20px"
+      marginTop="30px"
     >
       <ArrowBackIcon boxSize={6} marginRight="10px" />
       <Heading as="h2" size="lg" fontWeight="medium">

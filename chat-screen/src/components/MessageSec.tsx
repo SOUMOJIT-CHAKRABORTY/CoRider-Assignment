@@ -9,30 +9,55 @@ import {
   Text,
   WrapItem,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { chatMessage } from "../types/types";
+import axios from "axios";
 
-type Props = {
-  chats: Array<chatMessage>;
-  pageNumber: number;
-  setPageNumber: (val: number) => void;
-};
+const MessageSec: React.FC = () => {
+  const [chats, setChats] = useState<chatMessage[]>([]);
+  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [hasMoreChats, setHasMoreChats] = useState<boolean>(true);
 
-const MessageSec: React.FC<Props> = ({
-  chats,
-  pageNumber,
-  setPageNumber,
-}: Props) => {
+  const fetchData = async (page: number) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://qa.corider.in/assignment/chat?page=${page}`
+      );
+
+      const data = response.data;
+
+      if (data && data.chats) {
+        const newChat: chatMessage[] = data.chats || [];
+
+        setChats((prev) => (page === 0 ? newChat : [...prev, ...newChat]));
+
+        const totalChatMessages = data.total || 0;
+        setHasMoreChats(chats.length < totalChatMessages);
+      }
+    } catch {
+      console.log("Error fetching chats");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(pageNumber);
+  }, [pageNumber]);
+
   const handleLoadMore = () => {
-    setPageNumber(pageNumber + 1);
+    console.log(pageNumber);
+    setPageNumber((prev) => prev + 1);
   };
 
   return (
     <InfiniteScroll
       dataLength={chats.length}
       next={handleLoadMore}
-      hasMore={false}
+      hasMore={hasMoreChats}
       loader={
         <Center>
           <h4>Loading...</h4>
@@ -46,7 +71,7 @@ const MessageSec: React.FC<Props> = ({
         </AbsoluteCenter>
       </Box>
       {chats.length > 0 ? (
-        chats.reverse().map((chat) => {
+        chats.map((chat) => {
           return (
             <Box key={chat.id}>
               <Container>
