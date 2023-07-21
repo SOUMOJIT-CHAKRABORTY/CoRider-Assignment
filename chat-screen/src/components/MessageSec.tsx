@@ -53,7 +53,7 @@ const MessageSec: React.FC<Props> = ({
                 {!chat.sender.self ? (
                   <Flex>
                     <WrapItem>
-                      <Avatar src={chat.sender.image} boxSize={8} />
+                      <Avatar src={chat.sender.image} boxSize={7} />
                     </WrapItem>
                     <Box
                       borderBottomRadius="20px"

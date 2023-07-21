@@ -29,7 +29,7 @@ const MessageBar: React.FC = () => {
     <Center
       style={{
         position: "fixed",
-        bottom: "50px",
+        bottom: "20px",
         width: "100%",
         paddingLeft: "20px",
         paddingRight: "20px",
@@ -40,6 +40,7 @@ const MessageBar: React.FC = () => {
           placeholder="message"
           size="md"
           background="#ffffff"
+          _placeholder={{ color: "#B7B7B7" }}
           textColor="#B7B7B7"
           fontWeight="base"
           fontSize="14px"
