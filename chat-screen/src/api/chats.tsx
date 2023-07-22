@@ -45,6 +45,7 @@ const GetChats: React.FC = () => {
         paddingLeft: "0px",
         height: "100vh",
         boxSizing: "border-box",
+        fontFamily: "Mulish",
       }}
       background="#FAF9F4"
     >
@@ -62,7 +63,15 @@ const GetChats: React.FC = () => {
           />
         </AbsoluteCenter>
       )}
-      <Flex style={{ overflowY: "auto", height: "calc(100% - 210px)" }}>
+      <Flex
+        direction="column-reverse"
+        style={{
+          overflowY: "auto",
+          height: "calc(100% - 230px)",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
         <MessageSec />
       </Flex>
       <MessageBar />

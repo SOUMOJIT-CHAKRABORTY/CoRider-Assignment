@@ -20,6 +20,8 @@ const MessageSec: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(true);
 
+  const PAGE_SIZE = 10;
+
   const fetchData = async (page: number) => {
     setLoading(true);
     try {
@@ -34,8 +36,8 @@ const MessageSec: React.FC = () => {
 
         setChats((prev) => (page === 0 ? newChat : [...prev, ...newChat]));
 
-        const totalChatMessages = data.total || 0;
-        setHasMoreChats(chats.length < totalChatMessages);
+        const totalChatMessages = (page + 1) * PAGE_SIZE;
+        setHasMoreChats(newChat.length === PAGE_SIZE);
       }
     } catch {
       console.log("Error fetching chats");
@@ -48,15 +50,18 @@ const MessageSec: React.FC = () => {
     fetchData(pageNumber);
   }, [pageNumber]);
 
-  const handleLoadMore = () => {
-    console.log(pageNumber);
-    setPageNumber((prev) => prev + 1);
-  };
+  // const handleLoadMore = () => {
+  //   console.log(pageNumber);
+  //   setPageNumber((prev) => prev + 1);
+  // };
 
   return (
     <InfiniteScroll
       dataLength={chats.length}
-      next={handleLoadMore}
+      next={() => {
+        console.log(pageNumber);
+        setPageNumber((prev) => prev + 1);
+      }}
       hasMore={hasMoreChats}
       loader={
         <Center>
@@ -84,6 +89,7 @@ const MessageSec: React.FC = () => {
                       borderBottomRadius="20px"
                       borderTopRightRadius="20px"
                       borderTopLeftRadius="0px"
+                      fontFamily="Mulish"
                       textAlign="left"
                       maxW="80%"
                       padding="5px"
@@ -93,12 +99,7 @@ const MessageSec: React.FC = () => {
                       shadow="lg"
                     >
                       <Container paddingLeft="7px" paddingRight="0">
-                        <Text
-                          fontWeight="light"
-                          fontSize="14px"
-                          fontFamily="verdana"
-                          color="#606060"
-                        >
+                        <Text fontWeight="500" fontSize="14px" color="#606060">
                           {chat.message}
                         </Text>
                       </Container>
@@ -117,6 +118,7 @@ const MessageSec: React.FC = () => {
                       textAlign="left"
                       paddingLeft="0"
                       paddingRight="0"
+                      fontFamily="Mulish"
                       padding="5px"
                       marginTop="5px"
                       marginRight="5px"
@@ -127,9 +129,8 @@ const MessageSec: React.FC = () => {
                     >
                       <Container paddingLeft="7px" paddingRight="0">
                         <Text
-                          fontWeight="light"
+                          fontWeight="500"
                           fontSize="14px"
-                          fontFamily="verdana"
                           textAlign="left"
                           color="#ffffff"
                         >

@@ -10,14 +10,14 @@ type Props = {
 const Navbar: React.FC<Props> = ({ apiRes }: Props) => {
   return (
     <Flex
-      marginBottom="8px"
+      marginBottom="12px"
       alignItems="center"
       paddingLeft="20px"
       paddingRight="20px"
       marginTop="30px"
     >
       <ArrowBackIcon boxSize={6} marginRight="10px" />
-      <Heading as="h2" size="lg" fontWeight="medium">
+      <Heading as="h2" size="lg" fontWeight="700">
         {apiRes.name}
       </Heading>
       <Spacer />

@@ -1,0 +1,10 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Mulish:wght@400;500;600;700&display=swap");
+  font-family: "DM Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Mulish", sans-serif;
+}

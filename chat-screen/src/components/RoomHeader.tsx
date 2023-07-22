@@ -17,15 +17,37 @@ const RoomHeader: React.FC<Props> = ({ apiRes }: Props) => {
     >
       <Avatar marginRight="15px" />
       <Stack>
-        <Text fontWeight="light" fontSize="md" letterSpacing="1px" margin="0">
+        <Text
+          fontWeight="600"
+          fontFamily="Mulish"
+          fontSize="md"
+          textColor="#606060"
+          letterSpacing="1px"
+          margin="0"
+        >
           From{" "}
-          <span style={{ fontWeight: "bold", fontSize: "18px" }}>
+          <span
+            style={{
+              color: "#141E0D",
+              fontFamily: "Mulish",
+              fontWeight: "700",
+              fontSize: "18px",
+            }}
+          >
             {apiRes.from}
           </span>
         </Text>
-        <Text fontWeight="light" fontSize="md" letterSpacing="1px" margin="0">
+        <Text
+          fontWeight="600"
+          textColor="#606060"
+          fontSize="md"
+          letterSpacing="1px"
+          margin="0"
+        >
           To{" "}
-          <span style={{ fontWeight: "bold", fontSize: "18px" }}>
+          <span
+            style={{ color: "#141E0D", fontWeight: "700", fontSize: "18px" }}
+          >
             {apiRes.to}
           </span>
         </Text>
